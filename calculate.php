@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Parking Receipt </title>
+  </head>
+  <body style="background-color:#b9fffc; margin-left:33%; margin-right:30%;margin-top:2%;border-style: solid; color:#132743">
+    <div style="margin:10px; padding:0px; ">
+      <h1 style="margin-left:100px;margin-top:10px;">Parking Receipt</h1>
 <?php
 $servername = "localhost";
 $username = "root";
@@ -19,7 +28,10 @@ $date2=strtotime($d2);
 $diff=abs($date2-$date1);
 $days=floor($diff/60/60/24);
 $hours=$diff/60/60-$days*24;
-echo "$days days <br>";
+echo"<h3> Vehicle no:</h3>";
+echo" $_POST[reg_no]<br> ";
+echo"<br><h3>Total Time:</h3>";
+echo "$days days , ";
 echo "$hours hours <br>";
 if ("$_POST[type]"=="car") {
   $cost=$days*250;
@@ -52,10 +64,14 @@ else{
   }
 }
 if (mysqli_query($conn, $sql)) {
-  echo "<br>RS$cost is your bill for car number - $_POST[reg_no]";
+  echo"<br><h3>Total Bill: </h3>";
+  echo "Rs $cost ";
 } else {
   echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
 mysqli_close($conn);
 ?>
+</div>
+</body>
+</html>
